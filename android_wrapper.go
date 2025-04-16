@@ -1,6 +1,6 @@
 //go:build android
 
-package libXray
+package libHope
 
 import (
 	c "github.com/xtls/libxray/controller"

@@ -102,7 +102,7 @@ class Builder(object):
             lines = f.readlines()
             for line in lines:
                 new_line = line
-                if re.match(r"^package\s+libXray", line):
+                if re.match(r"^package\s+libHope", line):
                     new_line = "package main\n"
                 new_lines.append(new_line)
         with open(file_path, "w") as f:
@@ -133,7 +133,7 @@ class Builder(object):
             for line in lines:
                 new_line = line
                 if re.match(r"^package\s+main", line):
-                    new_line = "package libXray\n"
+                    new_line = "package libHope\n"
                 new_lines.append(new_line)
         with open(file_path, "w") as f:
             f.writelines(new_lines)

@@ -1,4 +1,4 @@
-package libXray
+package libHope
 
 import (
 	"encoding/base64"

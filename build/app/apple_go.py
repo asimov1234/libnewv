@@ -26,8 +26,8 @@ class AppleGoBuilder(Builder):
         self.framework_dir = os.path.join(self.lib_dir, "apple_xcframework")
         delete_dir_if_exists(self.framework_dir)
         create_dir_if_not_exists(self.framework_dir)
-        self.lib_file = "libXray.a"
-        self.lib_header_file = "libXray.h"
+        self.lib_file = "libHope.a"
+        self.lib_header_file = "libHope.h"
 
         self.ios_targets = [
             AppleTarget(
@@ -97,7 +97,7 @@ class AppleGoBuilder(Builder):
 
     def before_build(self):
         super().before_build()
-        self.clean_lib_dirs(["LibXray.xcframework"])
+        self.clean_lib_dirs(["LibHope.xcframework"])
         self.prepare_static_lib()
 
     def build(self):
@@ -160,7 +160,7 @@ class AppleGoBuilder(Builder):
         cmd = [
             "go",
             "build",
-            "-ldflags=-w",
+            "-ldflags=-w -s",
             f"-o={output_file}",
             "-buildmode=c-archive",
         ]
@@ -229,7 +229,7 @@ class AppleGoBuilder(Builder):
             lib_path = os.path.join(self.framework_dir, lib, self.lib_file)
             cmd.extend(["-library", lib_path, "-headers", include_dir])
 
-        output_file = os.path.join(self.lib_dir, "LibXray.xcframework")
+        output_file = os.path.join(self.lib_dir, "LibHope.xcframework")
         cmd.extend(["-output", output_file])
 
         print(cmd)
