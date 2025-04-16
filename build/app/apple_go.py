@@ -158,7 +158,10 @@ class AppleGoBuilder(Builder):
         run_env["DARWIN_SDK"] = sdk
 
         cmd = [
-            "go",
+            "garble",
+            "-literals",
+            "-seed=random",
+            "-tiny",
             "build",
             "-ldflags=-w -s",
             f"-o={output_file}",
