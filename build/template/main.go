@@ -12,13 +12,13 @@ func CGoCustomUUID(base64Text *C.char) *C.char {
 }
 
 
-//export CGoRunXray
+//export CGoRunHope
 func CGoRunHope(base64Text *C.char) *C.char {
 	text := C.GoString(base64Text)
 	return C.CString(RunHope(text))
 }
 
-//export CGoStopXray
+//export CGoStopHope
 func CGoStopHope() *C.char {
 	return C.CString(StopHope())
 }
