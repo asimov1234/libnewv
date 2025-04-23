@@ -53,47 +53,7 @@ class AppleGoBuilder(Builder):
             ),
         ]
 
-        # keep same with flutter
-        self.macos_targets = [
-            AppleTarget(
-                "darwin",
-                "amd64",
-                "x86_64",
-                "macosx",
-                "10.14",
-            ),
-            AppleTarget(
-                "darwin",
-                "arm64",
-                "arm64",
-                "macosx",
-                "10.14",
-            ),
-        ]
-
-        self.tvos_targets = [
-            AppleTarget(
-                "ios",
-                "arm64",
-                "arm64",
-                "appletvos",
-                "17.0",
-            ),
-            AppleTarget(
-                "ios",
-                "amd64",
-                "x86_64",
-                "appletvsimulator",
-                "17.0",
-            ),
-            AppleTarget(
-                "ios",
-                "arm64",
-                "arm64",
-                "appletvsimulator",
-                "17.0",
-            ),
-        ]
+        # macos_targets and tvos_targets removed to only support iOS
 
     def before_build(self):
         super().before_build()
@@ -107,18 +67,6 @@ class AppleGoBuilder(Builder):
         self.merge_static_lib(
             self.ios_targets[1].sdk,
             [self.ios_targets[1].apple_arch, self.ios_targets[2].apple_arch],
-        )
-        # build macos
-        self.build_targets(self.macos_targets)
-        self.merge_static_lib(
-            self.macos_targets[0].sdk,
-            [self.macos_targets[0].apple_arch, self.macos_targets[1].apple_arch],
-        )
-        # build tvos
-        self.build_targets(self.tvos_targets)
-        self.merge_static_lib(
-            self.tvos_targets[1].sdk,
-            [self.tvos_targets[1].apple_arch, self.tvos_targets[2].apple_arch],
         )
 
         self.after_build()
@@ -222,9 +170,6 @@ class AppleGoBuilder(Builder):
         libs = [
             f"{self.ios_targets[0].sdk}-{self.ios_targets[0].apple_arch}",
             f"{self.ios_targets[1].sdk}-{self.ios_targets[1].apple_arch}-{self.ios_targets[2].apple_arch}",
-            f"{self.macos_targets[0].sdk}-{self.macos_targets[0].apple_arch}-{self.macos_targets[1].apple_arch}",
-            f"{self.tvos_targets[0].sdk}-{self.tvos_targets[0].apple_arch}",
-            f"{self.tvos_targets[1].sdk}-{self.tvos_targets[1].apple_arch}-{self.tvos_targets[2].apple_arch}",
         ]
         include_dir = os.path.join(self.framework_dir, "include")
         cmd = ["xcodebuild", "-create-xcframework"]
