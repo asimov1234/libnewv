@@ -37,20 +37,6 @@ class AppleGoBuilder(Builder):
                 "iphoneos",
                 "15.0",
             ),
-            AppleTarget(
-                "ios",
-                "amd64",
-                "x86_64",
-                "iphonesimulator",
-                "15.0",
-            ),
-            AppleTarget(
-                "ios",
-                "arm64",
-                "arm64",
-                "iphonesimulator",
-                "15.0",
-            ),
         ]
 
         # macos_targets and tvos_targets removed to only support iOS
@@ -64,11 +50,6 @@ class AppleGoBuilder(Builder):
         self.before_build()
         # build ios
         self.build_targets(self.ios_targets)
-        self.merge_static_lib(
-            self.ios_targets[1].sdk,
-            [self.ios_targets[1].apple_arch, self.ios_targets[2].apple_arch],
-        )
-
         self.after_build()
 
         self.create_include_dir()
@@ -169,7 +150,6 @@ class AppleGoBuilder(Builder):
     def create_framework(self):
         libs = [
             f"{self.ios_targets[0].sdk}-{self.ios_targets[0].apple_arch}",
-            f"{self.ios_targets[1].sdk}-{self.ios_targets[1].apple_arch}-{self.ios_targets[2].apple_arch}",
         ]
         include_dir = os.path.join(self.framework_dir, "include")
         cmd = ["xcodebuild", "-create-xcframework"]
