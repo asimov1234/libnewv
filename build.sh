@@ -2,7 +2,7 @@
 set -x
 set -e
 
-#python3 build/main.py apple go
+python3 build/main.py apple go
 cd *.xcframework/ios-arm64 && mkdir temp && mv *.a temp/ 
 cd temp
 # 保存.a文件的文件名
