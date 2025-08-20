@@ -3,8 +3,8 @@ package share
 import (
 	"encoding/json"
 
-	"github.com/asimov/newv/common/net"
-	"github.com/asimov/newv/infra/conf"
+	"github.com/asimov1234/newv/common/net"
+	"github.com/asimov1234/newv/infra/conf"
 )
 
 type XrayRawSettingsHeader struct {

@@ -6,8 +6,8 @@ import (
 
 	"gopkg.in/yaml.v3"
 
-	"github.com/asimov/newv/infra/conf"
-	"github.com/asimov/newv/proxy/vless"
+	"github.com/asimov1234/newv/infra/conf"
+	"github.com/asimov1234/newv/proxy/vless"
 )
 
 // https://github.com/MetaCubeX/mihomo/blob/Alpha/docs/config.yaml

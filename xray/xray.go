@@ -4,9 +4,9 @@ import (
 	"os"
 	"runtime/debug"
 
-	"github.com/asimov/newv/common/cmdarg"
-	"github.com/asimov/newv/core"
-	_ "github.com/asimov/newv/main/distro/all"
+	"github.com/asimov1234/newv/common/cmdarg"
+	"github.com/asimov1234/newv/core"
+	_ "github.com/asimov1234/newv/main/distro/all"
 )
 
 var (

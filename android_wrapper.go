@@ -3,8 +3,8 @@
 package libHope
 
 import (
-	c "github.com/asimov/libnewv/controller"
-	"github.com/asimov/libnewv/dns"
+	c "github.com/asimov1234/libnewv/controller"
+	"github.com/asimov1234/libnewv/dns"
 )
 
 type DialerController interface {

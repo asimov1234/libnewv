@@ -11,8 +11,8 @@ import (
 	"strconv"
 	"time"
 
-	libXray "github.com/asimov/libnewv"
-	"github.com/asimov/libnewv/nodep"
+	libXray "github.com/asimov1234/libnewv"
+	"github.com/asimov1234/libnewv/nodep"
 )
 
 func ensureDir(dir string) error {

@@ -5,7 +5,7 @@ package controller
 import (
 	"syscall"
 
-	xinternet "github.com/asimov/newv/transport/internet"
+	xinternet "github.com/asimov1234/newv/transport/internet"
 )
 
 // Give a callback before connection beginning. Useful for Android development.

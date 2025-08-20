@@ -7,8 +7,8 @@ import (
 	"path"
 	"sort"
 
-	"github.com/asimov/libnewv/nodep"
-	"github.com/asimov/newv/app/router"
+	"github.com/asimov1234/libnewv/nodep"
+	"github.com/asimov1234/newv/app/router"
 	"google.golang.org/protobuf/proto"
 )
 

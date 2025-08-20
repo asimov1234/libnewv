@@ -8,8 +8,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/asimov/newv/infra/conf"
-	"github.com/asimov/newv/proxy/vless"
+	"github.com/asimov1234/newv/infra/conf"
+	"github.com/asimov1234/newv/proxy/vless"
 )
 
 // https://github.com/XTLS/Xray-core/discussions/716

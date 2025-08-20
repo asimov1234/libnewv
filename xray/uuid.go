@@ -1,7 +1,7 @@
 package xray
 
 import (
-	"github.com/asimov/newv/common/uuid"
+	"github.com/asimov1234/newv/common/uuid"
 )
 
 // convert text to uuid

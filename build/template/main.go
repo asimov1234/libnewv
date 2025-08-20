@@ -3,7 +3,7 @@ package main
 import (
 	"C"
 
-	libHope "github.com/asimov/libnewv"
+	libHope "github.com/asimov1234/libnewv"
 )
 
 func main() {}
