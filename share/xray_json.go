@@ -3,8 +3,8 @@ package share
 import (
 	"encoding/json"
 
-	"github.com/xtls/xray-core/common/net"
-	"github.com/xtls/xray-core/infra/conf"
+	"github.com/asimov/newv/common/net"
+	"github.com/asimov/newv/infra/conf"
 )
 
 type XrayRawSettingsHeader struct {

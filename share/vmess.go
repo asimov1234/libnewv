@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/xtls/xray-core/infra/conf"
+	"github.com/asimov/newv/infra/conf"
 )
 
 // https://github.com/2dust/v2rayN/wiki/%E5%88%86%E4%BA%AB%E9%93%BE%E6%8E%A5%E6%A0%BC%E5%BC%8F%E8%AF%B4%E6%98%8E(ver-2)
@@ -119,22 +119,7 @@ func (proxy vmessQrCode) streamSettings() (*conf.StreamConfig, error) {
 
 			streamSettings.RAWSettings = rawSettings
 		}
-	case "kcp", "mkcp":
-		kcpSettings := &conf.KCPConfig{}
-		headerType := proxy.Type
-		if len(headerType) > 0 {
-			var header XrayFakeHeader
-			header.Type = headerType
-
-			headerRawMessage, err := convertJsonToRawMessage(header)
-			if err != nil {
-				return nil, err
-			}
-			kcpSettings.HeaderConfig = headerRawMessage
-		}
-		kcpSettings.Seed = &proxy.Path
-
-		streamSettings.KCPSettings = kcpSettings
+	// KCP support removed
 	case "ws", "websocket":
 		wsSettings := &conf.WebSocketConfig{}
 		wsSettings.Path = proxy.Path

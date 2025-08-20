@@ -4,9 +4,9 @@ import (
 	"os"
 	"runtime/debug"
 
-	"github.com/xtls/xray-core/common/cmdarg"
-	"github.com/xtls/xray-core/core"
-	_ "github.com/xtls/xray-core/main/distro/all"
+	"github.com/asimov/newv/common/cmdarg"
+	"github.com/asimov/newv/core"
+	_ "github.com/asimov/newv/main/distro/all"
 )
 
 var (

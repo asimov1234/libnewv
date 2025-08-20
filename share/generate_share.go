@@ -7,8 +7,8 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/xtls/xray-core/infra/conf"
-	"github.com/xtls/xray-core/proxy/vless"
+	"github.com/asimov/newv/infra/conf"
+	"github.com/asimov/newv/proxy/vless"
 )
 
 // Convert XrayJson to share links.
@@ -252,29 +252,7 @@ func streamSettingsQuery(proxy conf.OutboundDetourConfig, link *url.URL) {
 				query = addQuery(query, "host", strings.Join(host, ","))
 			}
 		}
-	case "kcp":
-		if streamSettings.KCPSettings == nil {
-			break
-		}
-		seed := streamSettings.KCPSettings.Seed
-		if seed != nil && len(*seed) > 0 {
-			query = addQuery(query, "seed", *seed)
-		}
-
-		headerConfig := streamSettings.KCPSettings.HeaderConfig
-		if headerConfig == nil {
-			break
-		}
-		var header XrayFakeHeader
-		err := json.Unmarshal(headerConfig, &header)
-		if err != nil {
-			break
-		}
-
-		headerType := header.Type
-		if len(headerType) > 0 {
-			query = addQuery(query, "headerType", headerType)
-		}
+	// KCP support removed
 	case "ws":
 		if streamSettings.WSSettings == nil {
 			break
@@ -317,26 +295,7 @@ func streamSettingsQuery(proxy conf.OutboundDetourConfig, link *url.URL) {
 		if len(path) > 0 {
 			query = addQuery(query, "path", path)
 		}
-	case "xhttp":
-		if streamSettings.XHTTPSettings == nil {
-			break
-		}
-		host := streamSettings.XHTTPSettings.Host
-		if len(host) > 0 {
-			query = addQuery(query, "host", host)
-		}
-		path := streamSettings.XHTTPSettings.Path
-		if len(path) > 0 {
-			query = addQuery(query, "path", path)
-		}
-		mode := streamSettings.XHTTPSettings.Mode
-		if len(mode) > 0 {
-			query = addQuery(query, "mode", mode)
-		}
-		extra := streamSettings.XHTTPSettings.Extra
-		if extra != nil {
-			query = addQuery(query, "extra", string(extra))
-		}
+		// XHTTP support removed
 	}
 
 	switch streamSettings.Security {

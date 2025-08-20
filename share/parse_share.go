@@ -8,8 +8,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/xtls/xray-core/infra/conf"
-	"github.com/xtls/xray-core/proxy/vless"
+	"github.com/asimov/newv/infra/conf"
+	"github.com/asimov/newv/proxy/vless"
 )
 
 // https://github.com/XTLS/Xray-core/discussions/716
@@ -450,23 +450,7 @@ func (proxy xrayShareLink) streamSettings(link *url.URL) (*conf.StreamConfig, er
 
 			streamSettings.RAWSettings = rawSettings
 		}
-	case "kcp", "mkcp":
-		kcpSettings := &conf.KCPConfig{}
-		headerType := query.Get("headerType")
-		if len(headerType) > 0 {
-			var header XrayFakeHeader
-			header.Type = headerType
-
-			headerRawMessage, err := convertJsonToRawMessage(header)
-			if err != nil {
-				return nil, err
-			}
-			kcpSettings.HeaderConfig = headerRawMessage
-		}
-		seed := query.Get("seed")
-		kcpSettings.Seed = &seed
-
-		streamSettings.KCPSettings = kcpSettings
+	// KCP support removed
 	case "ws", "websocket":
 		wsSettings := &conf.WebSocketConfig{}
 		wsSettings.Path = query.Get("path")
@@ -486,27 +470,7 @@ func (proxy xrayShareLink) streamSettings(link *url.URL) (*conf.StreamConfig, er
 		httpupgradeSettings.Path = query.Get("path")
 
 		streamSettings.HTTPUPGRADESettings = httpupgradeSettings
-	case "xhttp", "splithttp":
-		xhttpSettings := &conf.SplitHTTPConfig{}
-		xhttpSettings.Host = query.Get("host")
-		xhttpSettings.Path = query.Get("path")
-		xhttpSettings.Mode = query.Get("mode")
-
-		extra := query.Get("extra")
-		if len(extra) > 0 {
-			var extraConfig conf.SplitHTTPConfig
-			err := json.Unmarshal([]byte(extra), &extraConfig)
-			if err != nil {
-				return nil, err
-			}
-			extraRawMessage, err := convertJsonToRawMessage(extraConfig)
-			if err != nil {
-				return nil, err
-			}
-			xhttpSettings.Extra = extraRawMessage
-		}
-
-		streamSettings.XHTTPSettings = xhttpSettings
+		// XHTTP/SplitHTTP support removed
 	}
 
 	err := proxy.parseSecurity(link, streamSettings)

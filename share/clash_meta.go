@@ -6,8 +6,8 @@ import (
 
 	"gopkg.in/yaml.v3"
 
-	"github.com/xtls/xray-core/infra/conf"
-	"github.com/xtls/xray-core/proxy/vless"
+	"github.com/asimov/newv/infra/conf"
+	"github.com/asimov/newv/proxy/vless"
 )
 
 // https://github.com/MetaCubeX/mihomo/blob/Alpha/docs/config.yaml
