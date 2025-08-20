@@ -33,13 +33,13 @@ class Builder(object):
         clean_files = ["go.mod", "go.sum"]
         self.clean_lib_files(clean_files)
         os.chdir(self.lib_dir)
-        ret = subprocess.run(["go", "mod", "init", "github.com/xtls/libxray"])
+        ret = subprocess.run(["go", "mod", "init", "github.com/asimov1234/libnewv"])
         if ret.returncode != 0:
             raise Exception("go mod init failed")
         self.append_lib_file_with_lines(
             "go.mod",
             [
-                "\nreplace github.com/xtls/xray-core => ../Xray-core\n",
+                "\nreplace github.com/asimov1234/newv => ../Xray-core\n",
             ],
         )
         ret = subprocess.run(["go", "mod", "tidy"])
@@ -51,7 +51,7 @@ class Builder(object):
         file_path = "./go.mod"
         with open(file_path, mode="r") as f:
             lines = f.readlines()
-            lines.append("replace github.com/xtls/xray-core => ../Xray-core\n")
+            lines.append("replace github.com/asimov1234/newv => ../Xray-core\n")
 
         with open(file_path, mode="w") as f:
             f.writelines(lines)
