@@ -5,8 +5,8 @@ import (
 	"encoding/base64"
 	"encoding/json"
 
-	"github.com/xtls/libxray/nodep"
-	"github.com/xtls/libxray/xray"
+	"github.com/asimov/libnewv/nodep"
+	"github.com/asimov/libnewv/xray"
 )
 
 type loadGeoDataRequest struct {

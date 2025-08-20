@@ -3,7 +3,7 @@ package main
 import (
 	"C"
 
-	libHope "github.com/xtls/libxray"
+	libHope "github.com/asimov/libnewv"
 )
 
 func main() {}

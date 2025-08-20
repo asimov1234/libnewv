@@ -1,4 +1,4 @@
-module github.com/xtls/libxray
+module github.com/asimov/libnewv
 
 go 1.23
 

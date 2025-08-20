@@ -3,8 +3,8 @@
 package libHope
 
 import (
-	c "github.com/xtls/libxray/controller"
-	"github.com/xtls/libxray/dns"
+	c "github.com/asimov/libnewv/controller"
+	"github.com/asimov/libnewv/dns"
 )
 
 type DialerController interface {
